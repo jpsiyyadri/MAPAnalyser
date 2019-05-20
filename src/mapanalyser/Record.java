@@ -20,8 +20,29 @@ public class Record {
         
     }
     // getters for all attributes
+
+    public String getId() {
+        return id;
+    }
+
+    public int getSbp() {
+        return sbp;
+    }
+
+    public int getDbp() {
+        return dbp;
+    }
+
+    public int getMap() {
+        return map;
+    }
+
+    public String getCategory() {
+        return Category;
+    }
     
     public String toString(){
         return "<"+id+","+sbp+","+dbp+","+map+","+Category+">";
     }
+    
 }
