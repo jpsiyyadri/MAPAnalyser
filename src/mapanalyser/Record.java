@@ -14,10 +14,13 @@ public class Record {
     private int sbp;
     private int dbp;
     private int map;
-    private String Category;
+    private String category;
     
-    public Record(String id, int sbp, int dbp, int map, String Category){
-        
+    public Record(String id, int sbp, int dbp, int map, String category){
+        this.id = id;
+        this.sbp = sbp;
+        this.map = map;
+        this.category = category;
     }
     // getters for all attributes
 
@@ -38,11 +41,11 @@ public class Record {
     }
 
     public String getCategory() {
-        return Category;
+        return category;
     }
     
     public String toString(){
-        return "<"+id+","+sbp+","+dbp+","+map+","+Category+">";
+        return "<"+id+","+sbp+","+dbp+","+map+","+category+">";
     }
     
 }

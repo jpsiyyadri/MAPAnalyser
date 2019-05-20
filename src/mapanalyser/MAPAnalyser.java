@@ -21,35 +21,72 @@ public class MAPAnalyser {
         this.sortByID();
     }
     
-    public Record find(String id){
-        for(int i=0; i<data.length; i++){
-            if(data[i].getId() == id){
-                return data[i];
+    public Record find(String id){        
+        for(int i=0; i<this.data.length; i++){
+            System.out.println(this.data[i]);
+            if(this.data[i].getId().equals(id)){
+                return this.data[i];
             }
         }
         return  null;
     }
     
     public int lowest(){
-        return 0;
+        if(this.data.length == 0){
+            return 0;
+        } else{
+            Record min_val = this.data[0];
+            for(int i=1; i<this.data.length; i++){
+                if(this.data[i].getMap()< min_val.getMap()){
+                   min_val = this.data[i]; 
+                }
+            }
+            return min_val.getMap();
+        }
     }
     
     public int highest(){
-        return 0;
+        if(this.data.length == 0){
+            return 0;
+        } else{
+            Record max_val = this.data[0];
+            for(int i=1; i<this.data.length; i++){
+                if(this.data[i].getMap() > max_val.getMap()){
+                   max_val = this.data[i]; 
+                }
+            }
+            return max_val.getMap();
+        }
     }
     
     public int median(){
-        return 0;
+        if(this.data.length == 0){
+            return 0;
+        } if(this.data.length%2 == 0){
+            return (int)(this.data[this.nrecords/2].getMap() + this.data[this.nrecords/2+1].getMap())/2;
+        } else{
+            return this.data[this.nrecords/2].getMap();
+        }
     }
     
     public Record[] find(int map1, int map2){
         Record[] r = new Record[0];
+        for(int i=0; i<this.data.length; i++){
+            if(this.data[i].getMap() < map1 & this.data[i].getMap() >= map1){
+                Record[] temp = new Record[r.length + 1];
+                for(int j=0; j<r.length; j++){
+                    temp[j] = r[j];
+                }
+                r = temp;
+            }
+        }
         return r;
     }
     
     private void sortByID(){
         // selection sort algorithm
         Record[] a = this.data;
+        
         for (int i=0; i<a.length-1; i++) {
             for (int j=i+1; j<a.length; j++) {
                if (a[i].getId().compareTo(a[j].getId()) > 0) {
@@ -87,6 +124,7 @@ public class MAPAnalyser {
     };
     
     private String classify(int map){
+        // returns the category of the map value
         if(map<=70){
             return "low";
         } else if(map<=100){

@@ -5,6 +5,7 @@
  */
 package mapanalyser;
 import mapanalyser.MAPAnalyser;
+import mapanalyser.Record;
 import java.util.Scanner;
 
 /**
@@ -35,24 +36,34 @@ public class View {
                         System.out.println("Display the same message again");
                         break;
                 case 1: 
-                        // find the recod eith this id
-                        String id = reader.next();
-                        System.out.println("The id "+id);
+                        // find the record eith this id
+                        String id = reader.next().replace("\n",  "");
+                        System.out.println(id);
+                        Record r = a.find(id);
+                        if(r == null){
+                            System.out.println("There is no such record with this id "+id);
+                        } else{
+                            System.out.println(r);
+                        }
                         break;
                 case 2: 
                         // subjects with in range map1 map2
                         int map1 = reader.nextInt();
                         int map2 = reader.nextInt();
+                        Record[] found = a.find(map1, map2);
+                        for(int i=0; i< found.length; i++){
+                            System.out.println(found[i]);
+                        }
                         break;
                 case 3: 
                         // display statistics
-                        System.out.println("Lowest MAP");
-                        System.out.println("Highest MAP");
-                        System.out.println("Median MAP");
+                        System.out.println("Lowest MAP : "+ a.lowest());
+                        System.out.println("Highest MAP : "+ a.highest());
+                        System.out.println("Median MAP : "+ a.median());
                         break;
                 case 9: 
                         continue_loop = false;
-                        System.out.println("Thanks..");
+                        System.out.println("Exiting the programme, Thanks..");
                         break;
             }
 
