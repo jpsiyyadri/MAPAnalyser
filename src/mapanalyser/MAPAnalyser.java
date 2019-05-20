@@ -32,5 +32,14 @@ public class MAPAnalyser {
         Record[] r = new Record[0];
         return r;
     }
+    private void SortByID(){
+        
+    }
+    private void loadFromTables(){
+        
+    } 
+    private String classify(int map){
+        return ""
+    }
     
 }

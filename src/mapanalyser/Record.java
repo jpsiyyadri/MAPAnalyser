@@ -22,6 +22,6 @@ public class Record {
     // getters for all attributes
     
     public String toString(){
-        return "ID: "+id+", SBP: "+sbp+", DBP: "+dbp+", MAP: "+map+", Category: "+Category;
+        return "<"+id+","+sbp+","+dbp+","+map+","+Category+">";
     }
 }
